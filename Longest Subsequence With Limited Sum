@@ -1,0 +1,13 @@
+class Solution:
+    def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        
+        nums.sort()
+        for i in range(len(queries)):
+            counter = 0
+            summ = 0
+            for j in nums:
+                if j <= queries[i] and summ + j  <= queries[i]:
+                        counter +=1
+                        summ += j
+            queries[i] = counter
+        return queries
