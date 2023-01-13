@@ -1,0 +1,25 @@
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        
+        #    # method one
+        # # ans = [0]
+        # # for i in range(len(gain)):
+        # #     solution = 0
+        # #     solution = gain[i] + ans [ i]
+        # #     ans.append(solution)
+        # # return max(ans)
+        #         # method two
+        # # ans = [0]
+        # # prefixSum = 0 
+        # # for i in range(len(gain)):
+        # #     prefixSum += gain[i]
+        # #     ans.append(prefixSum)
+        # # return max(ans)
+
+        #          method three
+        prefixSum = 0
+        maxim= 0
+        for i in range(len(gain)):
+            prefixSum += gain[i]
+            maxim = max(maxim , prefixSum)
+        return maxim 
