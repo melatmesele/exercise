@@ -1,0 +1,45 @@
+class Solution:
+    def findMiddleIndex(self, nums: List[int]) -> int:
+        #                # method one
+        # # ans = -1
+        # # n = len(nums)
+        # # for i in range(n):
+        # #     if i == 0  and sum(nums[1:n]) == 0:
+        # #         ans = i
+        # #     elif i == n-1  and sum(nums[0:n-1]) == 0:
+        # #         ans = i
+        # #     elif sum(nums[0:i]) == sum(nums[i+1:n]):
+        # #         ans = i
+            
+        # # return ans
+
+                        # method one
+        # leftSum = 0
+        # rightSum= sum(nums) 
+        # n = len(nums)
+        
+        # for i in range(n):
+        #     rightSum -= nums[i]
+        #     if rightSum == leftSum:
+        #         return i
+        #     leftSum += nums[i]
+        # return -1
+                        #method Two
+        n = len(nums)
+        prefixSum = [0]*n
+        prefixSum[0] = nums[0]
+        left ,right= 0
+        for i in range(1 , n):
+            prefixSum[i] = prefixSum[i-1] + nums[i]
+        for i in range(n):
+            if i == 0 :
+                left = 0 
+            else :
+                left = prefixSum[i-1]
+            if i == n-1:
+                right = 0
+            else:
+                right = prefixSum[-1] - prefixSum[i]
+            if left == right:
+                return i
+        return -1
